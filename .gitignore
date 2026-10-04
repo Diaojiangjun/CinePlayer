@@ -1,0 +1,46 @@
+# ============ 依赖 ============
+# npm install 可完整还原，体积大且含平台二进制，不入库
+node_modules/
+node_modules_bak/
+
+# ============ 构建产物 ============
+out/
+dist/
+release/
+
+# resources/bin 由 npm run prebuild（scripts/copy-binaries.mjs）从
+# node_modules/@ffmpeg-installer 复制生成，约 140MB；开发模式直接从
+# node_modules 解析二进制，打包时才需要它，因此不入库。
+resources/bin/
+
+# TypeScript 增量编译信息
+*.tsbuildinfo
+
+# ============ 测试与验证产物 ============
+# 冒烟测试的截图 / 素材 / 临时用户数据目录，以及单测打包产物
+.smoke/
+.verify/
+
+# ============ 缓存 ============
+.npmcache/
+.vite/
+.eslintcache
+
+# ============ 编辑器 / 构建临时文件 ============
+# electron-vite 开发时会在根目录落下带时间戳的配置副本
+electron.vite.config.*.mjs
+.vscode/*
+!.vscode/extensions.json
+
+# ============ 环境变量与密钥 ============
+.env
+.env.*
+
+# ============ 协作记录（非项目代码，含本地绝对路径） ============
+.workbuddy/
+
+# ============ 系统文件 ============
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

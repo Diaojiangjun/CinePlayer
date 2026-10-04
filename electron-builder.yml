@@ -1,0 +1,44 @@
+appId: com.cineplayer.app
+productName: CinePlayer
+directories:
+  buildResources: build
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!resources/bin/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+# ffmpeg / ffprobe 需要放在 asar 外才能被 spawn 执行
+extraResources:
+  - from: resources/bin
+    to: bin
+    filter:
+      - '**/*'
+asarUnpack:
+  - resources/**
+  - '**/node_modules/@ffmpeg-installer/**'
+  - '**/node_modules/@ffprobe-installer/**'
+win:
+  executableName: CinePlayer
+  target:
+    - nsis
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+mac:
+  target:
+    - dmg
+  category: public.app-category.video
+linux:
+  target:
+    - AppImage
+    - deb
+  category: AudioVideo
+  maintainer: cineplayer
+npmRebuild: false
