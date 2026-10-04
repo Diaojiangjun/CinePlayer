@@ -97,6 +97,14 @@ npm run build:mac
 npm run build:linux
 ```
 
+![image-20261004093734283](_assets/image-20261004093734283.png)
+
+![image-20261004093759622](_assets/image-20261004093759622.png)
+
+![image-20261004093824402](_assets/image-20261004093824402.png)
+
+
+
 ### 关于 ffmpeg / ffprobe
 
 转封装、转码与媒体探测依赖 ffmpeg / ffprobe，二者由 npm 包
